@@ -29,8 +29,8 @@
   (if (= "" movements)
     position
     (if (is-movement movements)
-      (rover-at x
-                (+ (get-increment movements orientation) y)
+      (rover-at (if (= orientation \E) 1 x)
+                (if (= orientation \E) y (+ (get-increment movements orientation) y))
                 orientation)
       (rover-at x y (new-orientation movements orientation))))))
 
