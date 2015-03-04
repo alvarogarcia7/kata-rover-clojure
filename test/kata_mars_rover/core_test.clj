@@ -3,12 +3,6 @@
             [kata-mars-rover.core :refer :all])
   (:use [midje.sweet]))
 
-; java.lang.RuntimeException: Can't have 2 overloads with same arity, compiling:(kata_mars_rover/core_test.clj:6:1)
-;(defn rover-at
-;  ([[x y] orientation] (rover-at x y orientation))
-;  ([x y]  (rover-at x y \N))
-;  ([x y orientation ]  {:x x :y y :orientation orientation}))
-
 (defn rover-at
   ([x y]  (rover-at x y \N))
   ([x y orientation ]  {:x x :y y :orientation orientation}))
