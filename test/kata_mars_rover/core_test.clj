@@ -3,13 +3,19 @@
             [kata-mars-rover.core :refer :all])
   (:use [midje.sweet]))
 
-(defn rover-at [x y]
-  {:x x :y y})
+(defn rover-at
+  ([x y]  (rover-at x y \N))
+  ([x y orientation ]  {:x x :y y :orientation orientation}))
+
+(defn is-movement [movements]
+  (or (= "f" movements) (= "b" movements)))
 
 (defn accept [position movements]
   (if (= "" movements)
     position
-    (rover-at 0 (if (= "f" movements) 1 -1))))
+    (if (is-movement movements)
+    (rover-at 0 (if (= "f" movements) 1 -1))
+    (rover-at 0 0 \W))))
 
 (facts
  "about midje"
