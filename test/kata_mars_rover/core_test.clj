@@ -61,4 +61,11 @@
           movements "r"]
       (accept position movements) => expected))
 
+   (fact
+      "the rover should move forward when facing other directions"
+      (let [position (rover-at 0 1 \S)
+            expected (rover-at 0 0 \S)
+            movements "f"]
+        (accept position movements) => expected))
+
  )
