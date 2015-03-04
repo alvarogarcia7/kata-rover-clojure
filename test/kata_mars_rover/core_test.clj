@@ -32,5 +32,11 @@
           movements "f"]
     (accept position movements) => expected))
 
+   (fact
+  "the rover should backwards"
+  (let [position (rover-at 0 0)
+        expected (rover-at 0 -1)
+          movements "b"]
+    (accept position movements) => expected))
 
  )
