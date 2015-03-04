@@ -26,7 +26,10 @@
       (rover-at x
                 (+ (get-increment movements pos) y)
                 pos)
-      (rover-at x y (if (= "l" movements) \W \E))))))
+      (rover-at x y (if (= \N pos)
+                      (if (= "l" movements) \W \E)
+                      \E
+                      ))))))
 
 (facts
  "about midje"
