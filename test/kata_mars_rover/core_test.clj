@@ -12,11 +12,15 @@
 
 (defn accept [position movements]
   (let [x (:x position)
-        y (:y position)]
+        y (:y position)
+        pos (:orientation position)]
   (if (= "" movements)
     position
     (if (is-movement movements)
-      (rover-at x (+ y (if (= "f" movements) 1 -1)))
+      (rover-at x
+                (if (= pos \N)
+                  (+ y (if (= "f" movements) 1 -1))
+                  0) pos)
       (rover-at x y (if (= "l" movements) \W \E))))))
 
 (facts
