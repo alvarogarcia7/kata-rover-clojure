@@ -39,4 +39,11 @@
           movements "b"]
     (accept position movements) => expected))
 
+   (fact
+    "the rover should turn left"
+    (let [position (rover-at 0 0 \N)
+          expected (rover-at 0 0 \W)
+          movements "l"]
+      (accept position movements) => expected))
+
  )
