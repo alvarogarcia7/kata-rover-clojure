@@ -11,9 +11,10 @@
   (or (= "f" movements) (= "b" movements)))
 
 (defn get-increment [movement orientation]
+  (let [is-forward (= "f" movement)]
   (if (= orientation \N)
-    (if (= "f" movement) 1 -1)
-    (if (= "f" movement) -1 1)))
+    (if is-forward 1 -1)
+    (if is-forward -1 1))))
 
 (defn accept [position movements]
   (let [x (:x position)
