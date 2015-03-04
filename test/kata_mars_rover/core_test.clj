@@ -16,7 +16,7 @@
   (if (= "" movements)
     position
     (if (is-movement movements)
-    (rover-at 0 (if (= "f" movements) 1 -1))
+    (rover-at x (if (= "f" movements) 1 -1))
     (rover-at x y (if (= "l" movements) \W \E))))))
 
 (facts
@@ -35,8 +35,8 @@
 
   (fact
   "the rover should forward"
-  (let [position (rover-at 0 0)
-        expected (rover-at 0 1)
+  (let [position (rover-at 1 0)
+        expected (rover-at 1 1)
           movements "f"]
     (accept position movements) => expected))
 
