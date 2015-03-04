@@ -9,7 +9,7 @@
 (defn accept [position movements]
   (if (= "" movements)
     position
-    (rover-at 0 1)))
+    (rover-at 0 (if (= "f" movements) 1 -1))))
 
 (facts
  "about midje"
