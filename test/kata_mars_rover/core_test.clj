@@ -16,6 +16,12 @@
     (if is-forward 1 -1)
     (if is-forward -1 1))))
 
+(defn new-orientation [movement orientation]
+  (if (= \N orientation)
+    (if (= "l" movement) \W \E)
+    \E
+    ))
+
 (defn accept [position movements]
   (let [x (:x position)
         y (:y position)
@@ -26,10 +32,7 @@
       (rover-at x
                 (+ (get-increment movements orientation) y)
                 orientation)
-      (rover-at x y (if (= \N orientation)
-                      (if (= "l" movements) \W \E)
-                      \E
-                      ))))))
+      (rover-at x y (new-orientation movements orientation))))))
 
 (facts
  "about midje"
