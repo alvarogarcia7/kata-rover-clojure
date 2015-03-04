@@ -15,7 +15,7 @@
     position
     (if (is-movement movements)
     (rover-at 0 (if (= "f" movements) 1 -1))
-    (rover-at 0 0 \W))))
+    (rover-at 0 0 (if (= "l" movements) \W \E)))))
 
 (facts
  "about midje"
