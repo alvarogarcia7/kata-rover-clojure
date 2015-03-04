@@ -4,7 +4,9 @@
   (:use [midje.sweet]))
 
 (defn accept [position movements]
-  position)
+  (if (= "" movements)
+    position
+    {:x 0 :y 1}))
 
 (facts
  "about midje"
