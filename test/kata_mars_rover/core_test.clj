@@ -10,6 +10,11 @@
 (defn is-movement [movements]
   (or (= "f" movements) (= "b" movements)))
 
+(defn get-increment [movement orientation]
+  (if (= orientation \N)
+    (if (= "f" movement) 1 -1)
+    (if (= "f" movement) -1 1)))
+
 (defn accept [position movements]
   (let [x (:x position)
         y (:y position)
@@ -18,9 +23,7 @@
     position
     (if (is-movement movements)
       (rover-at x
-                (if (= pos \N)
-                  (+ y (if (= "f" movements) 1 -1))
-                  (+ y (if (= "f" movements) -1 1)))
+                (+ (get-increment movements pos) y)
                 pos)
       (rover-at x y (if (= "l" movements) \W \E))))))
 
