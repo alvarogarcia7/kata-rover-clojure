@@ -19,14 +19,14 @@
 (defn accept [position movements]
   (let [x (:x position)
         y (:y position)
-        pos (:orientation position)]
+        orientation (:orientation position)]
   (if (= "" movements)
     position
     (if (is-movement movements)
       (rover-at x
-                (+ (get-increment movements pos) y)
-                pos)
-      (rover-at x y (if (= \N pos)
+                (+ (get-increment movements orientation) y)
+                orientation)
+      (rover-at x y (if (= \N orientation)
                       (if (= "l" movements) \W \E)
                       \E
                       ))))))
