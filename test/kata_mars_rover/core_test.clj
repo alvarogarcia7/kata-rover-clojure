@@ -84,4 +84,11 @@
             movements "b"]
         (accept position movements) => expected))
 
+    (fact
+        "the rover should turn left when facing other directions"
+        (let [position (rover-at 0 0 \S)
+              expected (rover-at 0 0 \E)
+              movements "l"]
+          (accept position movements) => expected))
+
  )
