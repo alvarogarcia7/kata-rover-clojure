@@ -2,6 +2,8 @@
   (:require [clojure.test :refer :all]
             [kata-mars-rover.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest mars-rover
+  (testing "the rover should not move on an empty movements"
+    (let [position {:x 0 :y 0}
+          movements ""]
+    (is (= position (accept position movements))))))
