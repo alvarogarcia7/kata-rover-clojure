@@ -11,12 +11,13 @@
   (or (= "f" movements) (= "b" movements)))
 
 (defn accept [position movements]
-  (let [x (:x position)]
+  (let [x (:x position)
+        y (:y position)]
   (if (= "" movements)
     position
     (if (is-movement movements)
     (rover-at 0 (if (= "f" movements) 1 -1))
-    (rover-at x 0 (if (= "l" movements) \W \E))))))
+    (rover-at x y (if (= "l" movements) \W \E))))))
 
 (facts
  "about midje"
@@ -55,8 +56,8 @@
 
     (fact
     "the rover should turn right"
-    (let [position (rover-at 1 0 \N)
-          expected (rover-at 1 0 \E)
+    (let [position (rover-at 1 1 \N)
+          expected (rover-at 1 1 \E)
           movements "r"]
       (accept position movements) => expected))
 
