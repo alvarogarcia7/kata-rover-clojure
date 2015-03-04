@@ -45,7 +45,7 @@
     position
     (if (is-movement movements)
       (let [[x y] (advance position movements)]
-      (rover-at x y orientation))
+        (rover-at x y orientation))
       (rover-at x y (new-orientation movements orientation))))))
 
 (facts
