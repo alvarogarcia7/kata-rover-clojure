@@ -17,3 +17,11 @@
   (fact
    "canary in midje"
    true => true))
+
+(facts
+ "about mars rover"
+ (fact
+  "the rover should not move on an empty movements"
+  (let [position {:x 0 :y 0}
+          movements ""]
+    (accept position movements) => position)))
