@@ -3,9 +3,16 @@
             [kata-mars-rover.core :refer :all])
   (:use [midje.sweet]))
 
+; java.lang.RuntimeException: Can't have 2 overloads with same arity, compiling:(kata_mars_rover/core_test.clj:6:1)
+;(defn rover-at
+;  ([[x y] orientation] (rover-at x y orientation))
+;  ([x y]  (rover-at x y \N))
+;  ([x y orientation ]  {:x x :y y :orientation orientation}))
+
 (defn rover-at
   ([x y]  (rover-at x y \N))
   ([x y orientation ]  {:x x :y y :orientation orientation}))
+
 
 (defn is-movement [movements]
   (or (= "f" movements) (= "b" movements)))
@@ -22,6 +29,14 @@
     \E
     ))
 
+(defn advance [position movements]
+  (let [x (:x position)
+        y (:y position)
+        orientation (:orientation position)]
+    (let [new-x (if (= orientation \E) 1 x)
+          new-y (if (= orientation \E) y (+ (get-increment movements orientation) y))]
+    [new-x new-y])))
+
 (defn accept [position movements]
   (let [x (:x position)
         y (:y position)
@@ -29,9 +44,8 @@
   (if (= "" movements)
     position
     (if (is-movement movements)
-      (rover-at (if (= orientation \E) 1 x)
-                (if (= orientation \E) y (+ (get-increment movements orientation) y))
-                orientation)
+      (let [[x y] (advance position movements)]
+      (rover-at x y orientation))
       (rover-at x y (new-orientation movements orientation))))))
 
 (facts
