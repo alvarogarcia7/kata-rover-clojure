@@ -20,7 +20,8 @@
       (rover-at x
                 (if (= pos \N)
                   (+ y (if (= "f" movements) 1 -1))
-                  0) pos)
+                  (+ y (if (= "f" movements) -1 1)))
+                pos)
       (rover-at x y (if (= "l" movements) \W \E))))))
 
 (facts
